@@ -11,6 +11,11 @@ const { fetchUser, fetchUserFulfilled } = createActions({
   FETCH_USER_FULFILLED: payload => payload
 });
 
+const { fetchTodos, fetchTodosFulfilled } = createActions({
+  FETCH_TODOS: payload => payload,
+  FETCH_TODOS_FULFILLED: payload => payload
+});
+
 export const addTodo = text => {
   const currentTime = new Date().getTime();
   return {
@@ -37,4 +42,12 @@ export const VisibilityFilters = {
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
 
-export { increment, decrement, incrementAsync, fetchUser, fetchUserFulfilled };
+export {
+  increment,
+  decrement,
+  incrementAsync,
+  fetchUser,
+  fetchUserFulfilled,
+  fetchTodos,
+  fetchTodosFulfilled
+};
