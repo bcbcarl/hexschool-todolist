@@ -1,3 +1,5 @@
+import prepend from 'ramda/src/prepend';
+
 const defaultTitle = 'Type Something Here...';
 
 const initialItems = [
@@ -56,8 +58,7 @@ const initialItems = [
 const todos = (state = initialItems, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return [
-        ...state,
+      return prepend(
         {
           id: action.id,
           created_at: action.created_at,
@@ -67,8 +68,9 @@ const todos = (state = initialItems, action) => {
           completed: false,
           attachment: false,
           comment: ''
-        }
-      ];
+        },
+        state
+      );
     case 'TOGGLE_TODO':
       return state.map(
         todo =>
