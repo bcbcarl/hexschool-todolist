@@ -11,7 +11,7 @@ const todos = (state = [], action) => {
           created_at: action.created_at,
           due_at: 0,
           title: action.text,
-          pinned: false,
+          pinned: true,
           completed: false,
           attachment: false,
           comment: ''
