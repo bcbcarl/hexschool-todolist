@@ -1,8 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import AddTask from './AddTask';
-import TodoList from './TodoList';
+import RestoreTodos from '../containers/RestoreTodos';
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
 
@@ -34,10 +33,9 @@ const FakeTaskLeft = () => (
 
 const TodoPanel = () => (
   <TabContainer>
-    {/* <AddTodo /> */}
-    <AddTask />
+    <RestoreTodos />
+    <AddTodo />
     <VisibleTodoList />
-    {/* <TaskList /> */}
     <FakeTaskLeft />
   </TabContainer>
 );
