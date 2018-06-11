@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
   appBar: {
+    boxShadow: 'none',
     backgroundColor: '#4a90e2'
   }
 });
