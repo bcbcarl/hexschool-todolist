@@ -8,7 +8,6 @@
 
 ## TBD
 
-- [ ] Use objects to store todos.
 - [ ] Redefine fetch to-dos to reset to-dos.
 - [ ] Get to-dos from store instead of from API.
 - [ ] Separate to-do lists into pinned list and unpinned list.

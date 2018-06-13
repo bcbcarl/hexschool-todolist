@@ -5,22 +5,28 @@ import { SortableContainer } from 'react-sortable-hoc';
 import TodoItem from './TodoItem';
 
 const TodoContainer = SortableContainer(({ todos }) => {
-  const items = todos.map((item, index) => {
-    const due = item.due_at
-      ? (date => `${date.getMonth() + 1}/${date.getDate()}`)(
-          new Date(item.due_at)
-        )
+  const items = Object.keys(todos).map((key, index) => {
+    const {
+      due_at: dueAt,
+      title,
+      pinned,
+      completed,
+      attachment,
+      comment
+    } = todos[key];
+    const due = dueAt
+      ? (date => `${date.getMonth() + 1}/${date.getDate()}`)(new Date(dueAt))
       : 0;
     return (
       <TodoItem
-        key={item.id}
+        key={key}
         index={index}
-        text={item.title}
-        pinned={item.pinned}
-        completed={item.completed}
+        text={title}
+        pinned={pinned}
+        completed={completed}
         due={due}
-        attachment={item.attachment}
-        comment={item.comment}
+        attachment={attachment}
+        comment={comment}
       />
     );
   });

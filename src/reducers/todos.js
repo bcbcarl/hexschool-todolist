@@ -1,13 +1,25 @@
-import prepend from 'ramda/src/prepend';
+const toggleTodo = (todos, key) => {
+  const todo = todos[key];
+  return {
+    ...todos,
+    [key]: {
+      ...todo,
+      completed: !todo.completed
+    }
+  };
+};
 
-const todos = (state = [], action) => {
+const initialState = {};
+const todos = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_TODOS_FULFILLED':
-      return action.payload;
+      return {
+        ...state,
+        ...action.payload
+      };
     case 'ADD_TODO':
-      return prepend(
-        {
-          id: action.id,
+      return {
+        [action.id]: {
           created_at: action.created_at,
           due_at: 0,
           title: action.text,
@@ -16,12 +28,11 @@ const todos = (state = [], action) => {
           attachment: false,
           comment: ''
         },
-        state
-      );
+        ...state
+      };
     case 'TOGGLE_TODO':
-      return state.map(
-        todo =>
-          todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+      return Object.keys(state).map(
+        key => (key === action.id ? toggleTodo(state, key) : state)
       );
     default:
       return state;
