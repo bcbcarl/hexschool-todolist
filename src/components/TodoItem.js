@@ -80,13 +80,13 @@ const BaseItem = ({
 }) => {
   const itemColor = pinned ? '#fff2dc' : '#f2f2f2';
   const primary = text;
-  const secondary = !completed ? (
+  const secondary = (
     <ListItemStatus
       due={due}
       attachment={attachment}
       comment={!!comment.length}
     />
-  ) : null;
+  );
 
   return (
     <ListItem
