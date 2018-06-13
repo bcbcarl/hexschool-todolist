@@ -1,6 +1,8 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { SortableElement } from 'react-sortable-hoc';
 
@@ -11,6 +13,7 @@ import CommentIcon from './icons/Comment';
 import Checkbox from './Checkbox';
 import PinSwitch from './PinSwitch';
 import EditSwitch from './EditSwitch';
+import { toggleTodo } from '../actions';
 
 const styles = theme => ({
   primary: {
@@ -65,6 +68,8 @@ const SecondaryAction = ({ pinned }) => (
 );
 
 const BaseItem = ({
+  dispatch,
+  id,
   classes,
   text,
   pinned,
@@ -92,7 +97,11 @@ const BaseItem = ({
         height: '102px'
       }}
     >
-      <Checkbox tabIndex={-1} checked={completed} />
+      <Checkbox
+        tabIndex={-1}
+        checked={completed}
+        onChange={() => dispatch(toggleTodo(id))}
+      />
       <ListItemText
         classes={{ primary: !completed ? classes.primary : classes.primary2 }}
         primary={primary}
@@ -103,6 +112,6 @@ const BaseItem = ({
   );
 };
 
-const TodoItem = SortableElement(BaseItem);
+const TodoItem = withStyles(styles)(BaseItem);
 
-export default withStyles(styles)(TodoItem);
+export default connect()(SortableElement(TodoItem));

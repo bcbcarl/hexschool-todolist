@@ -21,6 +21,7 @@ const TodoContainer = SortableContainer(({ todos }) => {
       <TodoItem
         key={key}
         index={index}
+        id={key}
         text={title}
         pinned={pinned}
         completed={completed}

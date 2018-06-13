@@ -41,7 +41,7 @@ export default {
     title: 'item 3',
     pinned: false,
     completed: true,
-    attachment: false,
-    comment: ''
+    attachment: true,
+    comment: 'completed by default'
   }
 };

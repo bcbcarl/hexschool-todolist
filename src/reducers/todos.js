@@ -31,9 +31,7 @@ const todos = (state = initialState, action) => {
         ...state
       };
     case 'TOGGLE_TODO':
-      return Object.keys(state).map(
-        key => (key === action.id ? toggleTodo(state, key) : state)
-      );
+      return toggleTodo(state, action.id);
     default:
       return state;
   }
