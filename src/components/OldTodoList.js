@@ -3,7 +3,7 @@ import { arrayMove } from 'react-sortable-hoc';
 
 import TodoContainer from './TodoContainer';
 
-class TodoList extends React.Component {
+class OldTodoList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -79,4 +79,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList;
+export default OldTodoList;
