@@ -1,4 +1,3 @@
-.cache-loader/
 .yarn_mirror/
 dist/
 node_modules/

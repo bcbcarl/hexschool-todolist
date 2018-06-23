@@ -3,6 +3,7 @@ module.exports = {
     [
       '@babel/preset-env',
       {
+        modules: false,
         useBuiltIns: 'usage'
       }
     ],
@@ -17,6 +18,7 @@ module.exports = {
     ],
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-react-constant-elements',
+    'react-hot-loader/babel',
     'transform-react-remove-prop-types',
     'styled-components'
   ]

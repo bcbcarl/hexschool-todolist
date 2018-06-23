@@ -1,7 +1,7 @@
 module.exports = {
   plugins: {
-    "postcss-normalize": { forceImport: true },
-    "autoprefixer": {},
-    "cssnano": {}
+    'postcss-normalize': {},
+    'postcss-flexbugs-fixes': {},
+    'autoprefixer': { flexbox: 'no-2009' }
   }
 };

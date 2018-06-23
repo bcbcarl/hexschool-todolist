@@ -1,75 +1,61 @@
 const path = require('path');
 const merge = require('webpack-merge');
-const webpack= require('webpack');
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 const common = require('./webpack.common.js');
 
+const uglifyOptions = {
+  ecma: 8,
+  beautify: false,
+  compress: {
+    drop_console: true
+  }
+};
+
 module.exports = merge(common, {
   mode: 'production',
-  entry: {
-    vendor: [
-      'core-js',
-      'ramda',
-      'react',
-      'react-dom',
-      'react-redux',
-      'redux',
-      'redux-actions',
-      'redux-devtools-extension',
-      'redux-observable',
-      'rxjs',
-      'styled-components'
-    ]
+  output: {
+    hashDigestLength: 8,
+    filename: '[name].[chunkhash].js',
+    path: path.resolve(__dirname, 'dist')
   },
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true
-      }),
-      new OptimizeCssAssetsPlugin()
-    ],
+    runtimeChunk: true,
     splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        },
-        commons: {
-          name: 'vendor',
-          test: 'vendor',
-          chunks: 'initial',
-          enforce: true
-        }
-      }
+      chunks: 'all'
     }
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackInlineSourcePlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: '[name].[contenthash].css'
+    }),
+    new OptimizeCssAssetsPlugin(),
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      uglifyOptions
     })
   ],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
-        use: [
-          'cache-loader',
-          'babel-loader'
-        ]
-      },
-      {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              camelCase: true
+            }
+          },
           'postcss-loader'
         ]
       }
