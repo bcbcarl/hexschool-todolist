@@ -1,5 +1,5 @@
 import React from 'react';
-import AddIcon from './icons/Add';
+import AddIcon from '../icons/Add';
 
 const AddTask = () => (
   <div

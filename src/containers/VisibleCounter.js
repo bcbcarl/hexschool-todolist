@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Counter from '../components/Counter';
+import Counter from '../components/example/Counter';
 import { increment, decrement, incrementAsync } from '../actions';
 
 const mapStateToProps = state => ({
