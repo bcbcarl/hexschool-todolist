@@ -1,5 +1,5 @@
 import React from 'react';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const BaseFaIcon = ({ type, icon, size }) => {
   const prefix = type === 'outline' ? 'far' : 'fas';

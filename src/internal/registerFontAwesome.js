@@ -1,17 +1,17 @@
-import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
-import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
-import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
-import faStar from '@fortawesome/fontawesome-free-solid/faStar';
+import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 
-import farCalendarAlt from '@fortawesome/fontawesome-free-regular/faCalendarAlt';
-import farCommentDots from '@fortawesome/fontawesome-free-regular/faCommentDots';
-import farEdit from '@fortawesome/fontawesome-free-regular/faEdit';
-import farFile from '@fortawesome/fontawesome-free-regular/faFile';
-import farStar from '@fortawesome/fontawesome-free-regular/faStar';
+import { faCalendarAlt as farCalendarAlt } from '@fortawesome/free-regular-svg-icons/faCalendarAlt';
+import { faCommentDots as farCommentDots } from '@fortawesome/free-regular-svg-icons/faCommentDots';
+import { faEdit as farEdit } from '@fortawesome/free-regular-svg-icons/faEdit';
+import { faFile as farFile } from '@fortawesome/free-regular-svg-icons/faFile';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons/faStar';
 
 const registerFontAwesome = () => {
-  fontawesome.library.add(
+  library.add(
     faEdit,
     faPlus,
     faStar,
