@@ -1,6 +1,7 @@
 .yarn_mirror/
 dist/
 node_modules/
+storybook-static/
 .DS_Store
 package-lock.json
 npm-debug.log*
