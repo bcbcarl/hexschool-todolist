@@ -11,6 +11,7 @@ import rootReducer from './reducers';
 import rootEpic from './epics';
 import registerFontAwesome from './internal/registerFontAwesome';
 
+import './fonts/roboto.css';
 import './styles.css';
 
 const composeEnhancers = composeWithDevTools({});

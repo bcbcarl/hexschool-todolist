@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const cssnano = require('cssnano');
 
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -36,7 +37,14 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
-    new OptimizeCssAssetsPlugin(),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: cssnano,
+      cssProcessorOptions: {
+        preset: 'default',
+        safe: true,
+        discardComments: { removeAll: true }
+      }
+    }),
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
