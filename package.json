@@ -10,7 +10,7 @@
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server --config webpack.dev.js",
     "start:story": "start-storybook -p 6006",
-    "build": "webpack-dashboard -- webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js",
     "build:analyze": "webpack --config webpack.analyze.js",
     "build:story": "build-storybook",
     "test": "jest",
